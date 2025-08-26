@@ -165,6 +165,16 @@ export type GameReview = string;
 export type Rating = number;
 export type VodLinks = string | null;
 export type GameId = number | null;
+export type TotalScore = number;
+export type CompletedGames = number;
+export type DiceRolls = number;
+export type HoursSpentOnGames = number;
+export type CardsReceived = number;
+export type CardsUsed = number;
+export type MapsCompleted = number;
+export type GamesDroppedOrRerolled = number;
+export type TrainRides = number;
+export type AverageRatingOfCompletedGames = number;
 /**
  * This interface was referenced by `ApiSchema`'s JSON-Schema
  * via the `definition` "GameCompletionType".
@@ -309,8 +319,8 @@ export type DonationLink = string | null;
 export type AvatarLink = string | null;
 export type IsActive = boolean;
 export type SectorId5 = number;
-export type TotalScore = number;
-export type MapsCompleted = number;
+export type TotalScore1 = number;
+export type MapsCompleted1 = number;
 export type Id4 = number;
 export type PlayerId2 = number;
 export type CreatedAt2 = number;
@@ -361,7 +371,7 @@ export type RideTrain = boolean;
 export type NewSectorId1 = number;
 export type MapCompleted1 = boolean;
 export type PlayerId3 = number;
-export type TotalScore1 = number;
+export type TotalScore2 = number;
 export type Username3 = string;
 export type GamesCompleted = number;
 export type GamesDropped = number;
@@ -560,6 +570,22 @@ export interface EventSettingsResponse {
 }
 export interface Settings {
   [k: string]: string | null;
+}
+/**
+ * This interface was referenced by `ApiSchema`'s JSON-Schema
+ * via the `definition` "FinalStatsResponse".
+ */
+export interface FinalStatsResponse {
+  total_score: TotalScore;
+  completed_games: CompletedGames;
+  dice_rolls: DiceRolls;
+  hours_spent_on_games: HoursSpentOnGames;
+  cards_received: CardsReceived;
+  cards_used: CardsUsed;
+  maps_completed: MapsCompleted;
+  games_dropped_or_rerolled: GamesDroppedOrRerolled;
+  train_rides: TrainRides;
+  average_rating_of_completed_games: AverageRatingOfCompletedGames;
 }
 /**
  * This interface was referenced by `ApiSchema`'s JSON-Schema
@@ -799,8 +825,8 @@ export interface PlayerDetails {
   avatar_link?: AvatarLink;
   is_active?: IsActive;
   sector_id: SectorId5;
-  total_score: TotalScore;
-  maps_completed: MapsCompleted;
+  total_score: TotalScore1;
+  maps_completed: MapsCompleted1;
   games: Games2;
   bonus_cards: BonusCards1;
   color: Color;
@@ -895,7 +921,7 @@ export interface PlayerMoveResponse {
  */
 export interface PlayerStats {
   player_id: PlayerId3;
-  total_score: TotalScore1;
+  total_score: TotalScore2;
   username: Username3;
   games_completed: GamesCompleted;
   games_dropped: GamesDropped;
