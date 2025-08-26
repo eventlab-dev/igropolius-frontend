@@ -2,6 +2,7 @@ import { getStreamUrl, getStreamPlatform } from '../../lib/streamUtils';
 import { useState, useEffect, useRef } from 'react';
 
 interface StreamPlayerProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   player: any;
   isExpanded: boolean;
   onToggleExpand: () => void;
@@ -22,6 +23,7 @@ export default function StreamPlayer({
   className = '',
   isFullHeight = false,
 }: StreamPlayerProps) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isHovered, setIsHovered] = useState(false);
   const [isUIVisible, setIsUIVisible] = useState(false);
   const hideTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -63,13 +65,15 @@ export default function StreamPlayer({
   }
 
   return (
-    <div 
+    <div
       className={`relative bg-black overflow-hidden stream-player ${isExpanded ? 'expanded' : ''} ${isExpanded && isFullHeight ? 'full-height' : ''} ${className}`}
       style={{ overflow: 'hidden' }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className={`absolute top-2 left-2 z-10 transition-opacity duration-200 ${isUIVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div
+        className={`absolute top-2 left-2 z-10 transition-opacity duration-200 ${isUIVisible ? 'opacity-100' : 'opacity-0'}`}
+      >
         <div className="flex flex-col gap-2 p-2 bg-black/50 rounded-lg">
           <button
             onClick={onToggleExpand}
@@ -88,7 +92,9 @@ export default function StreamPlayer({
         </div>
       </div>
 
-      <div className={`absolute top-2 right-2 z-10 flex gap-2 transition-opacity duration-200 ${isUIVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div
+        className={`absolute top-2 right-2 z-10 flex gap-2 transition-opacity duration-200 ${isUIVisible ? 'opacity-100' : 'opacity-0'}`}
+      >
         <div className="flex gap-2 p-2 bg-black/50 rounded-lg">
           {isExpanded && onToggleChat && (
             <button
@@ -109,23 +115,26 @@ export default function StreamPlayer({
         </div>
       </div>
 
-      <div className={`w-full h-full overflow-hidden ${platform.toLowerCase().replace(' ', '-')}-player`} style={{ overflow: 'hidden' }}>
+      <div
+        className={`w-full h-full overflow-hidden ${platform.toLowerCase().replace(' ', '-')}-player`}
+        style={{ overflow: 'hidden' }}
+      >
         <iframe
           src={streamUrl}
           className="w-full h-full border-0"
-          style={{ 
+          style={{
             overflow: 'hidden',
             display: 'block',
             ...(platform === 'Kick' && {
               overflow: 'hidden',
               scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
+              msOverflowStyle: 'none',
             }),
             ...(platform === 'VK Video' && {
               overflow: 'hidden',
               scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
-            })
+              msOverflowStyle: 'none',
+            }),
           }}
           allowFullScreen
           allow="autoplay; fullscreen"
