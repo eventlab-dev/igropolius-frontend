@@ -118,6 +118,8 @@ export default function StatisticsDialog({ className }: Props) {
                               ? colors.red
                               : colors.green
                             : undefined,
+                        textDecoration: 'underline',
+                        userSelect: 'none',
                       }}
                       onClick={() => onHeaderClick(col.key)}
                     >
