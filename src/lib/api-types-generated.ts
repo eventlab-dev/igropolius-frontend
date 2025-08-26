@@ -193,15 +193,15 @@ export type CreatedAt = number;
  */
 export type GameCompletionType = "completed" | "drop" | "reroll";
 export type SectorId3 = number;
-export type ItemTitle = string;
-export type ItemReview = string;
-export type ItemRating = number;
+export type Title = string;
+export type Review = string;
+export type Rating1 = number;
 /**
  * This interface was referenced by `ApiSchema`'s JSON-Schema
  * via the `definition` "GameLength".
  */
 export type GameLength = "" | "2-5" | "5-10" | "10-15" | "15-20" | "20-25" | "25+";
-export type ItemLengthBonus = number;
+export type LengthBonus = number;
 export type Duration = number | null;
 export type VodLinks1 = string | null;
 export type Cover = string | null;
@@ -405,9 +405,9 @@ export type RandomOrgFailReason1 = string | null;
 export type Content1 = string;
 export type CreatedAt3 = number;
 export type Versions = RulesVersion[];
-export type Title = string;
-export type Review = string;
-export type Rating1 = number;
+export type Title1 = string;
+export type Review1 = string;
+export type Rating2 = number;
 export type VodLinks2 = string | null;
 export type GameId3 = number | null;
 export type NewSectorId2 = number;
@@ -623,13 +623,13 @@ export interface PlayerGame {
   id: Id1;
   player_id: PlayerId3;
   created_at: CreatedAt;
-  type: GameCompletionType;
+  status: GameCompletionType;
   sector_id: SectorId3;
-  item_title: ItemTitle;
-  item_review: ItemReview;
-  item_rating: ItemRating;
-  item_length: GameLength;
-  item_length_bonus: ItemLengthBonus;
+  title: Title;
+  review: Review;
+  rating: Rating1;
+  length: GameLength;
+  length_bonus: LengthBonus;
   duration?: Duration;
   vod_links?: VodLinks1;
   cover?: Cover;
@@ -1011,9 +1011,9 @@ export interface RulesVersion {
  */
 export interface SavePlayerGameRequest {
   status: GameCompletionType;
-  title: Title;
-  review: Review;
-  rating: Rating1;
+  title: Title1;
+  review: Review1;
+  rating: Rating2;
   length: GameLength;
   vod_links?: VodLinks2;
   game_id?: GameId3;
