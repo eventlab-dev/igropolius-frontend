@@ -6,6 +6,7 @@ import {
   DropBonusCardRequest,
   EditPlayerGame,
   EventSettingsResponse,
+  FinalStatsResponse,
   GameDurationRequest,
   GameDurationResponse,
   GiveBonusCardRequest,
@@ -754,7 +755,9 @@ export async function fetchGameDuration(
   return response.json();
 }
 
-export async function createMessageNotification(request: CreateMessageNotificationRequest): Promise<void> {
+export async function createMessageNotification(
+  request: CreateMessageNotificationRequest
+): Promise<void> {
   if (MOCK_API) {
     return Promise.resolve();
   }
@@ -764,7 +767,9 @@ export async function createMessageNotification(request: CreateMessageNotificati
   });
 }
 
-export async function fetchHltbRandomGames(request: HltbRandomGameRequest): Promise<HltbGamesListResponse> {
+export async function fetchHltbRandomGames(
+  request: HltbRandomGameRequest
+): Promise<HltbGamesListResponse> {
   if (MOCK_API) {
     return Promise.resolve({
       games: mockHltbGamesList.games.slice(0, request.limit),
@@ -787,4 +792,40 @@ export async function fetchStats(): Promise<PlayerStatsResponse> {
   return response.json();
 }
 
-fetchStats();
+export async function fetchFinalStats(): Promise<FinalStatsResponse> {
+  if (MOCK_API) {
+    return Promise.resolve({
+      total_score: 10000,
+      completed_games: 235,
+      dice_rolls: 300,
+      hours_spent_on_games: 156,
+      cards_received: 421,
+      cards_used: 200,
+      maps_completed: 20,
+      games_dropped: 55,
+      games_rerolled: 12,
+      train_rides: 24,
+      average_rating_of_completed_games: 5,
+      players: playersData.map(player => ({
+        player_id: player.id,
+        username: player.username,
+        total_score: player.total_score,
+        games_completed: player.games.filter(g => g.status === 'completed').length,
+        games_dropped: player.games.filter(g => g.status === 'drop').length,
+        longest_game_hours:
+          player.games.sort((a, b) => (b.duration || 0) - (a.duration || 0))[0]?.duration || 0,
+        shortest_game_hours:
+          player.games.sort((a, b) => (a.duration || 0) - (b.duration || 0))[0]?.duration || 0,
+        cards_amount: 60,
+        hours_played: player.games.reduce(
+          (prev, curr) => ({ duration: (prev.duration || 0) + (curr.duration || 0) }),
+          { duration: 0 }
+        ).duration,
+        best_rated_game: playersData[0].games[4],
+        worst_rated_game: playersData[playersData.length - 1].games[1],
+      })),
+    });
+  }
+  const response = await apiRequest('/api/stats/final');
+  return response.json();
+}
