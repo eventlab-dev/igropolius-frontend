@@ -34,7 +34,7 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
             ? 'Очков — самый\nбогатый'
             : data.placement === players.length
               ? 'Очков — \nБанкрот!'
-              : 'Очков\nполучено';
+              : 'Очков\nзаработано';
         return {
           text: totalScoreText,
           icon: <Share className="size-[26px]" />,
@@ -66,9 +66,9 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
       case 'cards_amount':
         return { text: `Карточек\nзаролено`, order: 5 };
       case 'buildings_amount':
-        return { text: `Зданий\nна карте`, order: 2 };
+        return { text: `Зданий\nпостроено`, order: 2 };
       case 'monopolies_amount':
-        return { text: `Монополий\nпостроено`, order: 8 };
+        return { text: `Монополий\nсобрано`, order: 8 };
       default:
         return null;
     }
