@@ -39,6 +39,7 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
           text: totalScoreText,
           icon: <Share className="size-[26px]" />,
           order: 1,
+          modifiedValue: Math.round(data[dataKey]),
         };
       }
       case 'longest_game_hours':
