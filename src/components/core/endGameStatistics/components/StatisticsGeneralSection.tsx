@@ -15,17 +15,18 @@ function StatisticsGeneralSection({ data }: Props) {
         return {
           text: `Всего очков\nзаработано`,
           icon: <Share className="size-[26px]" />,
+          modifiedValue: Math.round(data[key]),
           order: 1,
         };
       case 'hours_spent_on_games':
         return {
           text: `Наиграли в игры\nстримеры`,
-          modifiedValue: `${data[key]}ч`,
+          modifiedValue: `${Math.round(data[key])}ч`,
           order: 4,
         };
       case 'average_rating_of_completed_games':
         return {
-          text: `Средняя оценка\nвсех игр`,
+          text: `Средняя оценка\nпройденных игр`,
           modifiedValue: `${data[key]} / 10`,
           order: 11,
         };

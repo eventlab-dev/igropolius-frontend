@@ -16,7 +16,7 @@ function StatisticsRows({
       if (!params) {
         return null;
       }
-      return { ...params, value: Math.round(value) };
+      return { ...params, value };
     })
     .filter(x => x !== null);
   const firstRow = dataEntries.filter(({ order }) => order <= 5);
