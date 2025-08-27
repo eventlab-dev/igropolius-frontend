@@ -1,6 +1,5 @@
 import { PlayerFinalStats } from '@/lib/api-types-generated';
 import { FALLBACK_AVATAR_URL } from '@/lib/constants';
-import { playersData } from '@/lib/mockData';
 import { StatisticsCardProps } from './StatisticsCard';
 import { formatMs, formatMsToHoursMins } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
@@ -10,6 +9,7 @@ import StatisticsRows from './StatisticsRows';
 import { Skeleton } from '@/components/ui/skeleton';
 import StatisticsGameReview from './StatisticsGameReview';
 import { Share } from '@/components/icons';
+import usePlayerStore from '@/stores/playerStore';
 
 type PlayerSectionProps = {
   data: PlayerFinalStats & {
@@ -20,8 +20,10 @@ type PlayerSectionProps = {
 };
 
 function StatisticsPlayerSection({ data }: PlayerSectionProps) {
-  const color = playersData.find(p => p.id === data.player_id)?.color || 'white';
-  const avatar = playersData.find(p => p.id === data.player_id)?.avatar_link || FALLBACK_AVATAR_URL;
+  const players = usePlayerStore(state => state.players);
+
+  const color = players.find(p => p.id === data.player_id)?.color || 'white';
+  const avatar = players.find(p => p.id === data.player_id)?.avatar_link || FALLBACK_AVATAR_URL;
 
   const keyToProps = (key: string): Omit<StatisticsCardProps, 'value'> | null => {
     const dataKey = key as keyof PlayerSectionProps['data'];
@@ -30,7 +32,7 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
         const totalScoreText =
           data.placement === 1
             ? 'Очков — самый\nбогатый'
-            : data.placement === playersData.length
+            : data.placement === players.length
               ? 'Очков — \nБанкрот!'
               : 'Очков\nполучено';
         return {
