@@ -22,13 +22,17 @@ import { fetchFinalStats } from '@/lib/api';
 import { SECTORS_COLOR_GROUPS } from '@/lib/constants';
 import useUrlPath from '@/hooks/useUrlPath';
 
+const ENABLE_STATS = false;
+
 function EndGameStatistics() {
   const { activate, pathActive } = useUrlPath('/finals');
 
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    setIsOpen(pathActive);
+    if (ENABLE_STATS) {
+      setIsOpen(pathActive);
+    }
   }, [pathActive]);
 
   const { data } = useQuery({
