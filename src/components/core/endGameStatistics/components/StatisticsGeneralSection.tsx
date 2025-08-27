@@ -9,25 +9,26 @@ type Props = {
 };
 
 function StatisticsGeneralSection({ data }: Props) {
-  const keyToProps = (key: keyof FinalStatsResponse): Omit<StatisticsCardProps, 'value'> | null => {
-    switch (key) {
+  const keyToProps = (key: string): Omit<StatisticsCardProps, 'value'> | null => {
+    const dataKey = key as keyof FinalStatsResponse;
+    switch (dataKey) {
       case 'total_score':
         return {
           text: `Всего очков\nзаработано`,
           icon: <Share className="size-[26px]" />,
-          modifiedValue: Math.round(data[key]),
+          modifiedValue: Math.round(data[dataKey]),
           order: 1,
         };
       case 'hours_spent_on_games':
         return {
           text: `Наиграли в игры\nстримеры`,
-          modifiedValue: `${Math.round(data[key])}ч`,
+          modifiedValue: `${Math.round(data[dataKey])}ч`,
           order: 4,
         };
       case 'average_rating_of_completed_games':
         return {
           text: `Средняя оценка\nпройденных игр`,
-          modifiedValue: `${data[key]} / 10`,
+          modifiedValue: `${data[dataKey]} / 10`,
           order: 11,
         };
       case 'completed_games':

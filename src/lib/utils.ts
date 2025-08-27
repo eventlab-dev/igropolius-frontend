@@ -501,6 +501,18 @@ export function formatMs(diffMs: number) {
   return `${hours}ч ${minutes}м`;
 }
 
+export function formatMsToHoursMins(diffMs: number) {
+  const diffS = Math.floor(diffMs / 1000);
+  const hours = Math.floor(diffS / (60 * 60));
+  const minutes = Math.floor((diffS % (60 * 60)) / 60);
+
+  if (hours === 0) {
+    return `${minutes}м`;
+  }
+
+  return `${hours}ч ${minutes}м`;
+}
+
 export function formatHltbLength(seconds: number) {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
@@ -744,8 +756,7 @@ export function getNoun(num: number, words: string[]) {
 }
 
 export function createPortionsRounded(amount: number, min: number, max: number) {
-  if (amount <= 1)
-    throw new Error('Amount must be greater than 1');
+  if (amount <= 1) throw new Error('Amount must be greater than 1');
 
   const result: number[] = [];
   const step = (max - min) / (amount - 1);
@@ -754,6 +765,6 @@ export function createPortionsRounded(amount: number, min: number, max: number) 
     result.push(Math.floor(min + step * i));
   }
 
-  console.log('function')
+  console.log('function');
   return result;
 }

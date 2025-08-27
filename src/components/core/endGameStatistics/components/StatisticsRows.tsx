@@ -1,18 +1,11 @@
-import { FinalStatsResponse } from '@/lib/api-types-generated';
 import StatisticsCard, { StatisticsCardProps } from './StatisticsCard';
 
-type KeyToPropsType = (key: keyof FinalStatsResponse) => Omit<StatisticsCardProps, 'value'> | null;
+type KeyToPropsType = (key: string) => Omit<StatisticsCardProps, 'value'> | null;
 
-function StatisticsRows({
-  data,
-  keyToProps,
-}: {
-  data: FinalStatsResponse;
-  keyToProps: KeyToPropsType;
-}) {
+function StatisticsRows({ data, keyToProps }: { data: object; keyToProps: KeyToPropsType }) {
   const dataEntries = Object.entries(data)
     .map(([key, value]) => {
-      const params = keyToProps(key as keyof FinalStatsResponse);
+      const params = keyToProps(key);
       if (!params) {
         return null;
       }
