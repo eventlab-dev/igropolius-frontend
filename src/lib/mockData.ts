@@ -1,4 +1,4 @@
-import { GameReviewType, FrontendCardData, SectorData, playerColors } from '@/lib/types';
+import { FrontendCardData, SectorData, playerColors } from '@/lib/types';
 
 import { FALLBACK_GAME_POSTER } from '@/lib/constants';
 import {
@@ -669,7 +669,7 @@ export const playersData: PlayerDetails[] = [
         duration: 3600,
         rating: 5,
         review:
-          'добротная игрушка, но есть пару недочетов: небольшое однообразие + камера из сериала школа, а так вполне неплохо!',
+          'добротная игрушка, но есть пару недочетов: небольшое однообразие + камера из сериала школа, а так вполне неплохо! добротная игрушка, но есть пару недочетов: небольшое однообразие + камера из сериала школа, а так вполне неплохо! добротная игрушка, но есть пару недочетов: небольшое однообразие + камера из сериала школа, а так вполне неплохо!',
         status: 'completed',
         vod_links: 'https://www.twitch.tv/videos/9988776655',
         cover: FALLBACK_GAME_POSTER,
@@ -1546,42 +1546,6 @@ export const bonusCardsData = {
 };
 
 export const mainCardTypes = Object.keys(frontendCardsData) as MainBonusCardType[];
-
-export const mockReviews: GameReviewType[] = [
-  {
-    gameTitle: 'Haste 1',
-    description:
-      'Очень весело бывает купаться, и очень интересно в воде плескаться. Это круто - плавать в озере. Лучше ничего, практически, не может быть!',
-    rating: 8,
-    points: 1000,
-    poster: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co9gpd.webp',
-    status: 'drop',
-    date: new Date(),
-    duration: 3600,
-  },
-  {
-    gameTitle: 'Haste 2',
-    description:
-      'Очень весело бывает купаться, и очень интересно в воде плескаться. Это круто - плавать в озере. Лучше ничего, практически, не может быть!',
-    rating: 8,
-    points: 1000,
-    poster: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co9gpd.webp',
-    status: 'completed',
-    date: new Date(),
-    duration: 4800,
-  },
-  {
-    gameTitle: 'Haste 3',
-    description:
-      'Очень весело бывает купаться, и очень интересно в воде плескаться. Это круто - плавать в озере. Лучше ничего, практически, не может быть!',
-    rating: 8,
-    points: 1000,
-    poster: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co9gpd.webp',
-    status: 'reroll',
-    date: new Date(),
-    duration: 1800,
-  },
-];
 
 type CreditsItem = {
   name: string;

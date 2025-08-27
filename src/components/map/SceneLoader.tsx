@@ -3,7 +3,7 @@ import { LoaderCircleIcon } from "lucide-react";
 
 function SceneLoader() {
   return (
-    <Html center>
+    <Html zIndexRange={[0, 0]} center>
       <LoaderCircleIcon className="animate-spin text-primary" size={54} />
     </Html>
   )

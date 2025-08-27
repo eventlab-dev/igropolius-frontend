@@ -16,6 +16,7 @@ import { Card } from './ui/card';
 import { useRef } from 'react';
 import { Button } from './ui/button';
 import { X } from './icons';
+import EndGameStatistics from './core/endGameStatistics/EndGameStatistics';
 
 function DesktopUI() {
   const techContainer = useRef<HTMLDivElement>(null);
@@ -137,7 +138,12 @@ function MobileUI() {
 function UI() {
   const isMobile = useIsMobile();
 
-  return isMobile ? <MobileUI /> : <DesktopUI />;
+  return (
+    <>
+      <EndGameStatistics />
+      {isMobile ? <MobileUI /> : <DesktopUI />}
+    </>
+  );
 }
 
 export default UI;

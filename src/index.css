@@ -156,7 +156,7 @@
   font-family: 'Roboto Flex', sans-serif;
   font-optical-sizing: auto;
   font-weight: 800;
-  font-style: normal;
+  font-style: italic;
   font-variation-settings:
     'slnt' -10,
     'wdth' 151,
@@ -181,6 +181,25 @@
     'wdth' 151,
     'GRAD' 0,
     'XOPQ' 160,
+    'XTRA' 520,
+    'YOPQ' 79,
+    'YTAS' 750,
+    'YTDE' -203,
+    'YTFI' 738,
+    'YTLC' 514,
+    'YTUC' 712;
+}
+
+.font-roboto-wide-black-alt {
+  font-family: 'Roboto Flex', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 1000;
+  font-style: normal;
+  font-variation-settings:
+    'slnt' 0,
+    'wdth' 151,
+    'GRAD' 0,
+    'XOPQ' 96,
     'XTRA' 520,
     'YOPQ' 79,
     'YTAS' 750,

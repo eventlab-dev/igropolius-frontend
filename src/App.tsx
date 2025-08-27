@@ -179,81 +179,6 @@ function App() {
 
   const isModelSelectionScene = myPlayer && (!myPlayer.model_name || !myPlayer.color);
 
-  // const { lightIntensity, bgIntensity, bgBlurriness, toneMapping } = useControls('Environment', {
-  //   toneMapping: {
-  //     value: 1,
-  //     min: 0,
-  //     max: 7,
-  //     step: 1,
-  //   },
-  //   lightIntensity: {
-  //     value: 0.7,
-  //     min: 0,
-  //     max: 10,
-  //     step: 0.1,
-  //   },
-  //   bgIntensity: {
-  //     value: 1.4,
-  //     min: 0,
-  //     max: 10,
-  //     step: 0.1,
-  //   },
-  //   bgBlurriness: {
-  //     value: 0.06,
-  //     min: 0,
-  //     max: 1,
-  //   },
-  // });
-  // const effects = useControls("Effects", {
-  //   enabled: false
-  // })
-  // const n8ao = useControls("N8AO", {
-  //   renderMode: {
-  //     value: 0,
-  //     min: 0,
-  //     max: 4,
-  //     step: 1,
-  //   },
-  //   aoRadius: {
-  //     value: 3,
-  //     min: 1,
-  //     max: 10,
-  //     step: 0.01,
-  //   },
-  //   distanceFalloff: {
-  //     value: 1,
-  //     min: 0.1,
-  //     max: 10,
-  //     step: 0.01,
-  //   },
-  //   intensity: {
-  //     value: 4.5,
-  //     min: 0.0,
-  //     max: 10,
-  //     step: 0.01,
-  //   },
-  // });
-  // const bloom = useControls("Bloom", {
-  //   lumThreshold: {
-  //     value: 0.1,
-  //     min: 0.0,
-  //     max: 1,
-  //     step: 0.01,
-  //   },
-  //   lumSmoothing: {
-  //     value: 0.1,
-  //     min: 0.0,
-  //     max: 1,
-  //     step: 0.01,
-  //   },
-  //   intensity: {
-  //     value: 0.25,
-  //     min: 0,
-  //     max: 1,
-  //     step: 0.01,
-  //   },
-  // });
-
   return (
     <>
       {enableMetrika && (
@@ -285,29 +210,11 @@ function App() {
                   />
 
                   {isModelSelectionScene ? <ModelSelectionScene /> : <GameScene />}
-
-                  {/* <EffectComposer enabled={effects.enabled} resolutionScale={100} renderPriority={1} enableNormalPass>
-                    <ToneMapping mode={toneMapping} />
-                    <Bloom
-                      intensity={bloom.intensity}
-                      luminanceThreshold={bloom.lumThreshold}
-                      luminanceSmoothing={bloom.lumSmoothing}
-                    />
-                    <HueSaturation />
-                    <N8AO
-                      halfRes
-                      renderMode={n8ao.renderMode}
-                      aoRadius={n8ao.aoRadius}
-                      intensity={n8ao.intensity}
-                      distanceFalloff={n8ao.distanceFalloff}
-                    />
-                  </EffectComposer> */}
                 </Suspense>
               </Canvas>
             ) : (
               <div className="w-full h-full bg-black" />
             )}
-            {/* <FPSCounter /> */}
           </div>
         </KeyboardControls>
       )}
