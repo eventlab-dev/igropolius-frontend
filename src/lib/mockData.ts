@@ -1470,12 +1470,12 @@ export const frontendInstantCardsData: Record<InstantCardType, FrontendCardData>
     name: 'А вот это явно не моя проблема',
     picture: `${import.meta.env.BASE_URL}assets/cards/leaders-lose-percents.png`,
     description:
-      'Первые три места в таблице лидеров теряют 5*{X}, 4*{X}, 3*{X} очков. В перый игровой день, пока места не распределены - получите 5 очков.',
+      'Первые три места в таблице лидеров теряют 6*{X}, 5*{X}, 4*{X} очков. В перый игровой день, пока места не распределены - получите 5 очков.',
   },
   'receive-1-percent-plus-20': {
     name: 'Просто мы нашли резинку',
     picture: `${import.meta.env.BASE_URL}assets/cards/receive-1-percent-plus-20.png`,
-    description: 'Получите 10*{X} очков.',
+    description: 'Получите 9*{X} очков.',
   },
   'lose-2-percents': {
     name: 'Плата?',
