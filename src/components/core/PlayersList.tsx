@@ -2,6 +2,7 @@ import PlayerDialog from './playerDialog/PlayerDialog';
 import usePlayerStore from '@/stores/playerStore';
 import { useShallow } from 'zustand/shallow';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './Collapsible';
+import useUrlPath from '@/hooks/useUrlPath';
 
 function PlayersList() {
   const { players, myPlayer, turnState } = usePlayerStore(
@@ -17,7 +18,9 @@ function PlayersList() {
   const nonCollapsiblePlayers = showCards ? players : players.slice(0, nonCollapsiblePlayersCount);
   const collapsiblePlayers = players.slice(nonCollapsiblePlayersCount);
 
-  if (players.length === 0) {
+  const { pathActive: isFinals } = useUrlPath('/finals');
+
+  if (players.length === 0 || isFinals) {
     return null;
   }
 
@@ -25,9 +28,7 @@ function PlayersList() {
     <div className="w-[268px]">
       <Collapsible>
         <div className="flex w-full justify-between items-center">
-          <span className="text-[#282828] font-roboto-wide-black opacity-70">
-            Игроки
-          </span>
+          <span className="text-[#282828] font-roboto-wide-black opacity-70">Игроки</span>
           <CollapsibleTrigger className="p-0 h-auto" />
         </div>
         <div className="space-y-[5px]">

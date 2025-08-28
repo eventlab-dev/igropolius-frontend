@@ -20,6 +20,7 @@ import GamesHistory from './options/GamesHistory';
 import StatisticsDialog from './options/StatisticsDialog';
 import SvgProfile from '@/components/icons/Profile';
 import DonationGoalCalculatorDialog from './options/DonationGoalCalculatorDialog';
+import useUrlPath from '@/hooks/useUrlPath';
 
 const buttonStyle =
   'flex items-center justify-start max-h-9 bg-transparent font-semibold text-base w-full rounded-none border-none px-3 py-2';
@@ -60,6 +61,12 @@ function QuickMenu() {
       navigate(`/${myUser.username.toLowerCase()}`);
     }
   };
+
+  const { pathActive: isFinals } = useUrlPath('/finals');
+
+  if (isFinals) {
+    return null;
+  }
 
   return (
     <Collapsible key={myPlayer?.id}>

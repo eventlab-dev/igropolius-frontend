@@ -37,24 +37,8 @@ export default function Countdown({ className }: Props) {
   };
 
   return (
-    <>
-      <RedirectToFinals />
-      <Button variant="outline" className={className} onClick={handleClick}>
-        Ивент завершен: итоги
-      </Button>
-    </>
+    <Button variant="outline" className={className} onClick={handleClick}>
+      Ивент завершен: итоги
+    </Button>
   );
-}
-
-function RedirectToFinals() {
-  const { activate, pathActive } = useUrlPath('/finals');
-  const [activated, setActivated] = useState(false);
-
-  useEffect(() => {
-    if (!pathActive && !activated) {
-      setActivated(true);
-      activate(true);
-    }
-  }, [pathActive, activate, activated]);
-  return null;
 }

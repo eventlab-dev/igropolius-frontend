@@ -12,6 +12,7 @@ import { formatMs } from '@/lib/utils';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { queryKeys } from '@/lib/queryClient';
 import { NotificationItem, PlayerDetails } from '@/lib/api-types-generated';
+import useUrlPath from '@/hooks/useUrlPath';
 
 function formatNotificationText(
   notification: NotificationItem,
@@ -163,6 +164,12 @@ function Notifications() {
     const notificationIds = notifications.map(n => n.id);
     await markNotificationsSeen({ notification_ids: notificationIds });
     queryClient.refetchQueries({ queryKey: queryKeys.notifications });
+  }
+
+  const { pathActive: isFinals } = useUrlPath('/finals');
+
+  if (isFinals) {
+    return null;
   }
 
   if (loading) {
