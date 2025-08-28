@@ -50,8 +50,8 @@ function StatisticsGeneralSection({ data }: Props) {
         return { text: `${noun}\nиспользовали`, order: 6 };
       }
       case 'maps_completed': {
-        const noun = getNoun(data[dataKey], ['Круг', 'Круга', 'Кругов'], false);
-        return { text: `${noun}\nпройдено`, order: 7 };
+        const noun = getNoun(data[dataKey], ['Круг\nпройден', 'Круга\nпройдено', 'Кругов\nпройдено'], false);
+        return { text: noun, order: 7 };
       }
       case 'games_dropped': {
         const noun = getNoun(data[dataKey], ['Игра дропнута', 'Игры дропнуто', 'Игр дропнуто'], false);
