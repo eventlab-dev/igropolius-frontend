@@ -1,7 +1,7 @@
 import { PlayerFinalStats } from '@/lib/api-types-generated';
 import { FALLBACK_AVATAR_URL } from '@/lib/constants';
 import { StatisticsCardProps } from './StatisticsCard';
-import { formatMs, formatMsToHoursMins } from '@/lib/utils';
+import { formatMs, formatMsToHoursMins, getNoun } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import StatisticsHeading from './StatisticsHeading';
@@ -29,17 +29,20 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
     const dataKey = key as keyof PlayerSectionProps['data'];
     switch (dataKey) {
       case 'total_score': {
+        const value = Math.round(data[dataKey]);
+        const noun = getNoun(value, ['Очко', 'Очка', 'Очков'], false);
         const totalScoreText =
           data.placement === 1
-            ? 'Очков — самый\nбогатый'
+            ? `${noun} — самый\nбогатый`
             : data.placement === players.length
-              ? 'Очков — \nБанкрот!'
-              : 'Очков\nзаработано';
+              ? `${noun} — \nБанкрот!`
+              : `${noun}\nзаработано`;
+
         return {
           text: totalScoreText,
           icon: <Share className="size-[26px]" />,
           order: 1,
-          modifiedValue: Math.round(data[dataKey]),
+          modifiedValue: value,
         };
       }
       case 'longest_game_hours':
@@ -60,16 +63,26 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
           modifiedValue: formatMs(data[dataKey] * 1000),
           order: 6,
         };
-      case 'games_completed':
-        return { text: `Игр\nпройдено`, order: 3 };
-      case 'games_dropped':
-        return { text: `Игр\nдропнуто`, order: 7 };
-      case 'cards_amount':
-        return { text: `Карточек\nзаролено`, order: 5 };
-      case 'buildings_amount':
-        return { text: `Зданий\nпостроено`, order: 2 };
-      case 'monopolies_amount':
-        return { text: `Монополий\nсобрано`, order: 8 };
+      case 'games_completed': {
+        const noun = getNoun(data[dataKey], ['Игра\nпройдена', 'Игры\nпройдены', 'Игр\nпройдено'], false);
+        return { text: noun, order: 3 };
+      }
+      case 'games_dropped': {
+        const noun = getNoun(data[dataKey], ['Игра\nдропнуто', 'Игры\nдропнуты', 'Игр\nдропнуто'], false);
+        return { text: noun, order: 7 };
+      }
+      case 'cards_amount': {
+        const noun = getNoun(data[dataKey], ['Карточка\nзаролена', 'Карточки\nзаролены', 'Карточек\nзаролено'], false);
+        return { text: noun, order: 5 };
+      }
+      case 'buildings_amount': {
+        const noun = getNoun(data[dataKey], ['Здание', 'Здания', 'Зданий'], false);
+        return { text: `${noun}\nпостроено`, order: 2 };
+      }
+      case 'monopolies_amount': {
+        const noun = getNoun(data[dataKey], ['Монополия\nсобрана', 'Монополии\nсобрано', 'Монополий\nсобрано'], false);
+        return { text: noun, order: 8 };
+      }
       default:
         return null;
     }

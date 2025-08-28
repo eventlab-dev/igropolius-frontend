@@ -2,7 +2,12 @@ import StatisticsCard, { StatisticsCardProps } from './StatisticsCard';
 
 type KeyToPropsType = (key: string) => Omit<StatisticsCardProps, 'value'> | null;
 
-function StatisticsRows({ data, keyToProps }: { data: object; keyToProps: KeyToPropsType }) {
+type Props = {
+  data: object;
+  keyToProps: KeyToPropsType;
+}
+
+function StatisticsRows({ data, keyToProps }: Props) {
   const dataEntries = Object.entries(data)
     .map(([key, value]) => {
       const params = keyToProps(key);

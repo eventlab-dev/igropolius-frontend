@@ -4,12 +4,17 @@ import { useState } from 'react';
 import ImageLoader from '../../ImageLoader';
 import { parseReview } from '@/lib/textParsing';
 
-function StatisticsGameReview({ data, title }: { data: PlayerGame; title: string }) {
+type Props = {
+  data: PlayerGame;
+  title: string;
+}
+
+function StatisticsGameReview({ data, title }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <button
-      className="group text-start bg-white/10 p-2.5 rounded-xl max-w-[300px]    overflow-hidden space-y-[10px] shrink-0 w-full data-[open=true]:max-h-none hover:bg-white/20 transition-all duration-300 cursor-pointer flex flex-start flex-col"
+      className="group text-start bg-white/10 p-2.5 rounded-xl max-w-[300px] overflow-hidden space-y-[10px] shrink-0 w-full data-[open=true]:max-h-none hover:bg-white/20 transition-all duration-300 cursor-pointer flex flex-start flex-col"
       data-open={isOpen}
       onClick={() => setIsOpen(!isOpen)}
     >

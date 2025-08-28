@@ -589,7 +589,7 @@ export const playersData: PlayerDetails[] = [
     building_upgrade_bonus: 0,
     game_difficulty_level: 0,
 
-    total_score: 5000,
+    total_score: 5001,
     games: [
       {
         id: 9,
@@ -781,7 +781,7 @@ export const playersData: PlayerDetails[] = [
     telegram_link: 'https://t.me/praden',
     donation_link: 'https://donate.praden.com',
 
-    total_score: 200,
+    total_score: 202,
     maps_completed: 1,
     building_upgrade_bonus: 0,
     game_difficulty_level: 0,
@@ -850,7 +850,7 @@ export const playersData: PlayerDetails[] = [
     telegram_link: 'https://t.me/praden',
     donation_link: 'https://donate.praden.com',
 
-    total_score: 200,
+    total_score: 213,
     maps_completed: 2,
     building_upgrade_bonus: 0,
     game_difficulty_level: 0,
@@ -970,7 +970,7 @@ export const playersData: PlayerDetails[] = [
     telegram_link: 'https://t.me/praden',
     donation_link: 'https://donate.praden.com',
 
-    total_score: 200,
+    total_score: 334,
     maps_completed: 0,
     building_upgrade_bonus: 0,
     game_difficulty_level: 0,
@@ -1030,7 +1030,7 @@ export const playersData: PlayerDetails[] = [
     telegram_link: 'https://t.me/praden',
     donation_link: 'https://donate.praden.com',
 
-    total_score: 200,
+    total_score: 155,
     maps_completed: 0,
     building_upgrade_bonus: 0,
     game_difficulty_level: 0,

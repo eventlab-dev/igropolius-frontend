@@ -3,6 +3,7 @@ import { StatisticsCardProps } from './StatisticsCard';
 import { Share } from '@/components/icons';
 import StatisticsHeading from './StatisticsHeading';
 import StatisticsRows from './StatisticsRows';
+import { getNoun } from '@/lib/utils';
 
 type Props = {
   data: FinalStatsResponse;
@@ -31,22 +32,39 @@ function StatisticsGeneralSection({ data }: Props) {
           modifiedValue: `${data[dataKey]} / 10`,
           order: 11,
         };
-      case 'completed_games':
-        return { text: `Игр пройдено\nна ивенте`, order: 2 };
-      case 'dice_rolls':
-        return { text: `Раз бросили\nкубики`, order: 3 };
-      case 'cards_received':
-        return { text: `Раз ролили\nкарточки`, order: 5 };
-      case 'cards_used':
-        return { text: `Карточек\nиспользовали`, order: 6 };
-      case 'maps_completed':
-        return { text: `Кругов\nпройдено`, order: 7 };
-      case 'games_dropped':
-        return { text: `Игр дропнуто\nна ивенте`, order: 8 };
-      case 'games_rerolled':
-        return { text: `Игр рерольнуто\nучастниками`, order: 9 };
-      case 'train_rides':
-        return { text: `Поездки на\nпоезде`, order: 10 };
+      case 'completed_games': {
+        const noun = getNoun(data[dataKey], ['Игра пройдена', 'Игры пройдено', 'Игр пройдено'], false);
+
+        return { text: `${noun}\nна ивенте`, order: 2 };
+      }
+      case 'dice_rolls': {
+        const noun = getNoun(data[dataKey], ['Раз', 'Раза', 'Раз'], false);
+        return { text: `${noun} бросили\nкубики`, order: 3 };
+      }
+      case 'cards_received': {
+        const noun = getNoun(data[dataKey], ['Раз', 'Раза', 'Раз'], false);
+        return { text: `${noun} ролили\nкарточки`, order: 5 };
+      }
+      case 'cards_used': {
+        const noun = getNoun(data[dataKey], ['Карточку', 'Карточки', 'Карточек'], false);
+        return { text: `${noun}\nиспользовали`, order: 6 };
+      }
+      case 'maps_completed': {
+        const noun = getNoun(data[dataKey], ['Круг', 'Круга', 'Кругов'], false);
+        return { text: `${noun}\nпройдено`, order: 7 };
+      }
+      case 'games_dropped': {
+        const noun = getNoun(data[dataKey], ['Игра дропнута', 'Игры дропнуто', 'Игр дропнуто'], false);
+        return { text: `${noun}\nна ивенте`, order: 8 };
+      }
+      case 'games_rerolled': {
+        const noun = getNoun(data[dataKey], ['Игра рерольнута', 'Игры рерольнуто', 'Игр рерольнуто'], false);
+        return { text: `${noun}\nучастниками`, order: 9 };
+      }
+      case 'train_rides': {
+        const noun = getNoun(data[dataKey], ['Поездка', 'Поездки', 'Поездок'], false);
+        return { text: `${noun} на\nпоезде`, order: 10 };
+      }
       default:
         return null;
     }
