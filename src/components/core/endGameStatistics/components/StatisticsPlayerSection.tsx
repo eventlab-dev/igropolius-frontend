@@ -1,12 +1,11 @@
 import { PlayerFinalStats } from '@/lib/api-types-generated';
-import { FALLBACK_AVATAR_URL } from '@/lib/constants';
+import { FALLBACK_AVATAR_URL, VideoLinks } from '@/lib/constants';
 import { StatisticsCardProps } from './StatisticsCard';
 import { formatMs, formatMsToHoursMins, getNoun } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import StatisticsHeading from './StatisticsHeading';
 import StatisticsRows from './StatisticsRows';
-import { Skeleton } from '@/components/ui/skeleton';
 import StatisticsGameReview from './StatisticsGameReview';
 import { Share } from '@/components/icons';
 import usePlayerStore from '@/stores/playerStore';
@@ -128,8 +127,10 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
 
       <div className="space-y-[15px]">
         <div className="text-center font-roboto-wide-black-alt text-2xl leading-7">Лучший клип</div>
-        <div className="w-[500px] h-[281px] shrink-0 mx-auto">
-          <Skeleton className="w-full h-full" />
+        <div className="flex justify-center">
+          <div className="min-w-[500px] max-w-[500px] min-h-[281px] max-h-[281px]">
+            <VideoPlayer videoLink={VideoLinks[data.username.toLowerCase()] ?? ''} />
+          </div>
         </div>
       </div>
 
@@ -148,3 +149,20 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
 }
 
 export default StatisticsPlayerSection;
+
+type VideoProps = {
+  videoLink: string;
+};
+
+function VideoPlayer({ videoLink }: VideoProps) {
+  return (
+    <video
+      key={videoLink}
+      controls
+      className="w-full h-full border-solid border-[#ccc] rounded-[10px]"
+    >
+      <source src={videoLink} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  );
+}

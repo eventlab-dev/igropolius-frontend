@@ -185,3 +185,16 @@ export const GameLengthDisplay: Record<GameLength, string> = {
   '20-25': '21-25',
   '25+': '26+',
 };
+
+export const VideoLinks: Record<string, string> = {
+  praden: '',
+  krabick: '',
+  maddyson: '',
+  lasqa: '',
+  f1ashko: '',
+  roadhouse: '',
+  browjey: '',
+  sgtgrafoyni: '',
+  melharucos: '',
+  segall: '',
+};
