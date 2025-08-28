@@ -637,14 +637,20 @@ export function create7tvEmoteUrl(emoteId: string): string {
 
 export function getCardDescription(
   card: FrontendCardData,
-  scoreMultiplier?: number | null
+  scoreMultiplier?: number | null,
+  cooldownTurnsLeft?: number
 ): string {
   if (!scoreMultiplier) {
     scoreMultiplier = useSystemStore.getState().instantCardScoreMultiplier;
   }
 
-  const withMulti = card.description.replaceAll('{X}', String(scoreMultiplier));
-  return esliFix(withMulti);
+  let description = card.description.replaceAll('{X}', String(scoreMultiplier));
+
+  if (cooldownTurnsLeft && cooldownTurnsLeft > 0) {
+    description += ` <span class="mt-2 text-sm font-bold text-red-400">(Кулдаун: ${cooldownTurnsLeft} ходов)</span>`;
+  }
+
+  return esliFix(description);
 }
 
 export function getTaxCalculationText(taxInfo: TaxData, myPlayerId?: number): string {

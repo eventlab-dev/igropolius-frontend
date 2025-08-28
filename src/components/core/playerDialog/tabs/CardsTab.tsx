@@ -11,9 +11,10 @@ import BonusCardComponent from '../../BonusCardComponent';
 type GameCardProps = {
   type: MainBonusCardType;
   inactive?: boolean;
+  cooldownTurnsLeft?: number;
 };
 
-function GameCard({ type, inactive }: GameCardProps) {
+function GameCard({ type, inactive, cooldownTurnsLeft }: GameCardProps) {
   const cardData = frontendCardsData[type];
   const isMobile = useIsMobile();
   const [showDescription, setShowDescription] = useState(false);
@@ -66,9 +67,10 @@ function GameCard({ type, inactive }: GameCardProps) {
           >
             <div className="bg-card/95 backdrop-blur-[1.5rem] p-4 rounded-lg border shadow-lg w-full max-w-sm">
               <div className="text-[16px] font-semibold mb-2">{cardData.name}</div>
-              <div className="text-sm font-semibold text-muted-foreground">
-                {getCardDescription(cardData)}
-              </div>
+              <div
+                className="text-sm font-semibold text-muted-foreground"
+                dangerouslySetInnerHTML={{ __html: getCardDescription(cardData, undefined, cooldownTurnsLeft) }}
+              ></div>
             </div>
           </div>
         )}
@@ -96,9 +98,10 @@ function GameCard({ type, inactive }: GameCardProps) {
           sideOffset={8}
         >
           <div className="text-[20px] font-semibold mb-2 leading-6">{cardData.name}</div>
-          <div className="text-base font-semibold text-muted-foreground leading-[19px]">
-            {getCardDescription(cardData)}
-          </div>
+          <div
+            className="text-base font-semibold text-muted-foreground leading-[19px]"
+            dangerouslySetInnerHTML={{ __html: getCardDescription(cardData, undefined, cooldownTurnsLeft) }}
+          ></div>
         </TooltipContent>
       </Tooltip>
     </div>
@@ -122,9 +125,16 @@ function CardsTab({ player }: { player: PlayerDetails }) {
         )}
         {showBuildingBonus && <BuildingBonusCard buildingBonus={buildingBonus} />}
         {showMapBonus && <MapScoreBonusCard mapsCompleted={player.maps_completed} />}
-        {availableCards.map(type => (
-          <GameCard key={type} type={type} />
-        ))}
+        {availableCards.map(type => {
+          const card = player.bonus_cards.find(card => card.bonus_type === type);
+          return (
+            <GameCard
+              key={type}
+              type={type}
+              cooldownTurnsLeft={card?.cooldown_turns_left}
+            />
+          );
+        })}
       </div>
 
       {unavailableCards.length > 0 && (
