@@ -647,7 +647,7 @@ export function getCardDescription(
   let description = card.description.replaceAll('{X}', String(scoreMultiplier));
 
   if (cooldownTurnsLeft && cooldownTurnsLeft > 0) {
-    description += ` <span class="mt-2 text-sm font-bold text-red-400">(Кулдаун: ${cooldownTurnsLeft} ходов)</span>`;
+    description += ` <span class="mt-2 text-sm font-bold text-red-400">(Кулдаун: ${getTurnsNoun(cooldownTurnsLeft)})</span>`;
   }
 
   return esliFix(description);
@@ -759,6 +759,10 @@ export function getNoun(num: number, words: string[]) {
   } else {
     return `${num} ${words[2]}`;
   }
+}
+
+export function getTurnsNoun(num: number) {
+  return getNoun(num, ['ход', 'хода', 'ходов']);
 }
 
 export function createPortionsRounded(amount: number, min: number, max: number) {

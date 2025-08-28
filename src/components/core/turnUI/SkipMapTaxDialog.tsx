@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/card';
 import { activateBonusCard } from '@/lib/api';
 import { resetNotificationsQuery } from '@/lib/queryClient';
 import { MapTaxPercent, MinMapTax } from '@/lib/constants';
+import { getTurnsNoun } from '@/lib/utils';
 import usePlayerStore from '@/stores/playerStore';
 import { useShallow } from 'zustand/shallow';
 
@@ -59,7 +60,7 @@ export default function SkipMapTaxDialog() {
           onClick={handleUseCard}
           disabled={cooldown !== 0}
         >
-          {cooldown === 0 ? 'Использовать карточку' : `Кулдаун: ${cooldown} ходов`}
+          {cooldown === 0 ? 'Использовать карточку' : `Кулдаун: ${getTurnsNoun(cooldown)}`}
         </Button>
       </div>
     </Card>

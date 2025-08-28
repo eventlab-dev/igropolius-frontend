@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { activateBonusCard } from '@/lib/api';
+import { getTurnsNoun } from '@/lib/utils';
 import { resetNotificationsQuery } from '@/lib/queryClient';
 import usePlayerStore from '@/stores/playerStore';
 import { useShallow } from 'zustand/shallow';
@@ -45,7 +46,7 @@ export default function SkipPrisonDialog() {
           onClick={handleUseCard}
           disabled={cooldown !== 0}
         >
-          {cooldown === 0 ? 'Сбежать' : `Кулдаун: ${cooldown} ходов`}
+          {cooldown === 0 ? 'Сбежать' : `Кулдаун: ${getTurnsNoun(cooldown)}`}
         </Button>
       </div>
     </Card>

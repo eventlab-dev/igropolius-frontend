@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { makePlayerMove } from '@/lib/api';
+import { getTurnsNoun } from '@/lib/utils';
 import { TrainsConfig } from '@/lib/constants';
 import { SectorsById, sectorsData } from '@/lib/mockData';
 import useCameraStore from '@/stores/cameraStore';
@@ -166,7 +167,7 @@ export default function DiceBonusesDialog() {
           <div className="mt-[20px]">
             <div className="mb-[15px]">
               Выбрать только один кубик?
-              {chooseDieCooldown !== 0 && <span>&nbsp;Кулдаун: {chooseDieCooldown} ходов</span>}
+              {chooseDieCooldown !== 0 && <span>&nbsp;Кулдаун: {getTurnsNoun(chooseDieCooldown)}</span>}
             </div>
             <NumberToggle
               options={[
@@ -189,7 +190,7 @@ export default function DiceBonusesDialog() {
           <div className="mt-[20px]">
             <div className="mb-[15px]">
               Изменить результат на 1?{' '}
-              {adjustBy1Cooldown !== 0 && <span>Кулдаун: {adjustBy1Cooldown} ходов</span>}
+              {adjustBy1Cooldown !== 0 && <span>Кулдаун: {getTurnsNoun(adjustBy1Cooldown)}</span>}
             </div>
             <NumberToggle
               options={[

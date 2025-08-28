@@ -11,7 +11,7 @@ import { activateBonusCard } from '@/lib/api';
 import { resetPlayersQuery } from '@/lib/queryClient';
 import { MainBonusCardType } from '@/lib/api-types-generated';
 import ImageLoader from './ImageLoader';
-import { getCardDescription } from '@/lib/utils';
+import { getCardDescription, getTurnsNoun } from '@/lib/utils';
 import { BUILDING_BONUS_IMAGE, SCORE_BONUS_PER_MAP_COMPLETION } from '@/lib/constants';
 import BonusCardComponent from './BonusCardComponent';
 import { useNavigate } from 'react-router';
@@ -123,7 +123,7 @@ export default function MyCards() {
                       </div>
                     )}
                     {cardCooldown !== 0 && (
-                      <div className="mt-2 text-sm font-bold">Кулдаун: {cardCooldown} ходов</div>
+                      <div className="mt-2 text-sm font-bold">Кулдаун: {getTurnsNoun(cardCooldown)}</div>
                     )}
                     {cardOwned &&
                       (cooldownTurns === 0 ? (
@@ -132,7 +132,7 @@ export default function MyCards() {
                         </div>
                       ) : (
                         <div className="mt-2 text-sm font-bold text-red-400">
-                          Осталось: {cooldownTurns} ходов
+                          Осталось: {getTurnsNoun(cooldownTurns)}
                         </div>
                       ))}
                   </div>
