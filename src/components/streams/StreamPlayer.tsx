@@ -138,6 +138,7 @@ export default function StreamPlayer({
           }}
           allowFullScreen
           allow="autoplay; fullscreen"
+          sandbox="allow-modals allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"
           scrolling="no"
         />
       </div>
