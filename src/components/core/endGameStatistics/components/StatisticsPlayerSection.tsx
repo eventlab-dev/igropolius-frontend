@@ -64,15 +64,27 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
           order: 6,
         };
       case 'games_completed': {
-        const noun = getNoun(data[dataKey], ['Игра\nпройдена', 'Игры\nпройдены', 'Игр\nпройдено'], false);
+        const noun = getNoun(
+          data[dataKey],
+          ['Игра\nпройдена', 'Игры\nпройдены', 'Игр\nпройдено'],
+          false
+        );
         return { text: noun, order: 3 };
       }
       case 'games_dropped': {
-        const noun = getNoun(data[dataKey], ['Игра\nдропнуто', 'Игры\nдропнуты', 'Игр\nдропнуто'], false);
+        const noun = getNoun(
+          data[dataKey],
+          ['Игра\nдропнуто', 'Игры\nдропнуты', 'Игр\nдропнуто'],
+          false
+        );
         return { text: noun, order: 7 };
       }
       case 'cards_amount': {
-        const noun = getNoun(data[dataKey], ['Карточка\nзаролена', 'Карточки\nзаролены', 'Карточек\nзаролено'], false);
+        const noun = getNoun(
+          data[dataKey],
+          ['Карточка\nзаролена', 'Карточки\nзаролены', 'Карточек\nзаролено'],
+          false
+        );
         return { text: noun, order: 5 };
       }
       case 'buildings_amount': {
@@ -80,7 +92,11 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
         return { text: `${noun}\nпостроено`, order: 2 };
       }
       case 'monopolies_amount': {
-        const noun = getNoun(data[dataKey], ['Монополия\nсобрана', 'Монополии\nсобрано', 'Монополий\nсобрано'], false);
+        const noun = getNoun(
+          data[dataKey],
+          ['Монополия\nсобрана', 'Монополии\nсобрано', 'Монополий\nсобрано'],
+          false
+        );
         return { text: noun, order: 8 };
       }
       default:

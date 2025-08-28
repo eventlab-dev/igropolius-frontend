@@ -20,7 +20,7 @@ import { fetchFinalStats } from '@/lib/api';
 import { SECTORS_COLOR_GROUPS } from '@/lib/constants';
 import useUrlPath from '@/hooks/useUrlPath';
 
-const ENABLE_STATS = false;
+const ENABLE_STATS = true;
 
 function EndGameStatistics() {
 	const { activate, pathActive } = useUrlPath('/finals');

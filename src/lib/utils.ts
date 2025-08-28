@@ -750,14 +750,16 @@ export function getNoun(num: number, words: string[], withValue = true) {
   const lastTwoDigits = Math.abs(num) % 100;
   const lastDigit = lastTwoDigits % 10;
 
+  const numStr = num.toLocaleString('ru-RU');
+
   if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-    return withValue ? `${num} ${words[2]}` : words[2];
+    return withValue ? `${numStr} ${words[2]}` : words[2];
   } else if (lastDigit === 1) {
-    return withValue ? `${num} ${words[0]}` : words[0];
+    return withValue ? `${numStr} ${words[0]}` : words[0];
   } else if (lastDigit >= 2 && lastDigit <= 4) {
-    return withValue ? `${num} ${words[1]}` : words[1];
+    return withValue ? `${numStr} ${words[1]}` : words[1];
   } else {
-    return withValue ? `${num} ${words[2]}` : words[2];
+    return withValue ? `${numStr} ${words[2]}` : words[2];
   }
 }
 

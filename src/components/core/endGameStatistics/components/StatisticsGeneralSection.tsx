@@ -17,7 +17,7 @@ function StatisticsGeneralSection({ data }: Props) {
         return {
           text: `Всего очков\nзаработано`,
           icon: <Share className="size-[26px]" />,
-          modifiedValue: Math.round(data[dataKey]),
+          modifiedValue: Math.round(data[dataKey]).toLocaleString('ru-RU'),
           order: 1,
         };
       case 'hours_spent_on_games':
