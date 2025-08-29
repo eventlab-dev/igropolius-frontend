@@ -103,6 +103,8 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
     }
   };
 
+  const videoLink = VideoLinks[data.username.toLowerCase()] ?? '';
+
   return (
     <div className="space-y-[30px]">
       <div className="space-y-[15px]">
@@ -125,14 +127,18 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
 
       <StatisticsRows data={data} keyToProps={keyToProps} />
 
-      <div className="space-y-[15px]">
-        <div className="text-center font-roboto-wide-black-alt text-2xl leading-7">Лучший клип</div>
-        <div className="flex justify-center">
-          <div className="min-w-[500px] max-w-[500px] min-h-[281px] max-h-[281px]">
-            <VideoPlayer videoLink={VideoLinks[data.username.toLowerCase()] ?? ''} />
+      {videoLink && (
+        <div className="space-y-[15px]">
+          <div className="text-center font-roboto-wide-black-alt text-2xl leading-7">
+            Забавный клип
+          </div>
+          <div className="flex justify-center">
+            <div className="min-w-[500px] max-w-[500px] min-h-[281px] max-h-[281px]">
+              <VideoPlayer videoLink={videoLink} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {(data.best_rated_game || data.worst_rated_game) && (
         <div className="flex gap-[15px] justify-center">
