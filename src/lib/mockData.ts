@@ -1562,6 +1562,7 @@ export const CreditsData: CreditsItem[] = [
   { name: 'naknagetss (artnaku)', action: 'дизайн 3д карты' },
   { name: 'ksanich', action: 'дизайн 3д моделек, видос' },
   { name: 'Шестиклассник из ФМЛ 239', action: 'аналитика, баланс' },
+  { name: 'Стримушка', action: 'подборка клипов' },
 ].sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1));
 
 export const mockHltbGamesList: HltbGamesListResponse = {
