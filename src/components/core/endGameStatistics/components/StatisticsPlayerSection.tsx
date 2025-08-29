@@ -134,7 +134,7 @@ function StatisticsPlayerSection({ data }: PlayerSectionProps) {
         </div>
       </div>
 
-      {data.best_rated_game && data.worst_rated_game && (
+      {(data.best_rated_game || data.worst_rated_game) && (
         <div className="flex gap-[15px] justify-center">
           {data.best_rated_game && (
             <StatisticsGameReview data={data.best_rated_game} title="Лучшая игра" />
