@@ -187,14 +187,14 @@ export const GameLengthDisplay: Record<GameLength, string> = {
 };
 
 export const VideoLinks: Record<string, string> = {
-  praden: '',
-  krabick: '',
-  maddyson: '',
-  lasqa: '',
-  f1ashko: '',
-  roadhouse: '',
-  browjey: '',
-  sgtgrafoyni: '',
-  melharucos: '',
-  segall: '',
+  praden: 'https://storage.yandexcloud.net/monopoly2025/praden.mp4',
+  krabick: 'https://storage.yandexcloud.net/monopoly2025/krabick.mp4',
+  maddyson: 'https://storage.yandexcloud.net/monopoly2025/maddyson.mp4',
+  lasqa: 'https://storage.yandexcloud.net/monopoly2025/lasqa.mp4',
+  f1ashko: 'https://storage.yandexcloud.net/monopoly2025/f1ashko.mp4',
+  roadhouse: 'https://storage.yandexcloud.net/monopoly2025/roadhouse.mp4',
+  browjey: 'https://storage.yandexcloud.net/monopoly2025/browjey.mp4',
+  sgtgrafoyni: 'https://storage.yandexcloud.net/monopoly2025/sgtgrafoyni.mp4',
+  melharucos: 'https://storage.yandexcloud.net/monopoly2025/melharucos.mp4',
+  segall: 'https://storage.yandexcloud.net/monopoly2025/segall.mp4',
 };
