@@ -394,6 +394,7 @@ export type ScoreLostOnCards = number;
 export type StreetTaxPaid = number;
 export type MapTaxPaid = number;
 export type IncomeFromOthers = number;
+export type BuildingScoresSum = number;
 export type Stats = PlayerStats[];
 export type Num = number;
 export type Min = number;
@@ -963,6 +964,7 @@ export interface PlayerStats {
   street_tax_paid: StreetTaxPaid;
   map_tax_paid: MapTaxPaid;
   income_from_others: IncomeFromOthers;
+  building_scores_sum: BuildingScoresSum;
 }
 /**
  * This interface was referenced by `ApiSchema`'s JSON-Schema

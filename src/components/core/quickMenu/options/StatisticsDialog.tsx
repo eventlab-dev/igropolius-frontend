@@ -29,6 +29,7 @@ type Columns =
   | 'instant_cards_used'
   | 'instant_cards_score'
   | 'street_income'
+  | 'building_scores_sum'
   | 'street_tax_paid'
   | 'map_tax_paid';
 
@@ -40,6 +41,7 @@ const columns: { key: Columns; header: string; sortKey: SortKey }[] = [
   { key: 'games', header: 'Игры', sortKey: 'games_completed' },
   // { key: 'games_dropped', header: 'Игр дропнуто' },
   { key: 'games_score', header: 'Очки с игр', sortKey: 'score_from_games_completed' },
+  { key: 'building_scores_sum', header: 'Сумма очков зданий', sortKey: 'building_scores_sum' },
   // { key: 'score_from_games_dropped', header: 'Очки с дропов' },
   { key: 'instant_cards_used', header: 'Мгновенные карты', sortKey: 'instant_cards_used' },
   { key: 'instant_cards_score', header: 'Очки с карт', sortKey: 'score_from_cards' },
@@ -90,7 +92,7 @@ export default function StatisticsDialog({ className }: Props) {
         Статистика
       </DialogTrigger>
       <DialogContent
-        className="w-[1000px]! max-w-[1000px]! p-0 h-[400px] overflow-hidden"
+        className="w-[1200px]! max-w-[1200px]! p-0 h-[400px] overflow-hidden"
         aria-describedby=""
       >
         <ScrollArea className="max-h-full px-5 overflow-y-auto">
@@ -170,6 +172,9 @@ export default function StatisticsDialog({ className }: Props) {
                           content = playerStats['income_from_others'].toString();
                           break;
                         case 'street_tax_paid':
+                          content = playerStats[col.key].toString();
+                          break;
+                        case 'building_scores_sum':
                           content = playerStats[col.key].toString();
                           break;
                         default: {
