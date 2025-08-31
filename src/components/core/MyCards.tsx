@@ -79,11 +79,18 @@ export default function MyCards() {
           const cardOwned = myPlayer.bonus_cards.find(card => card.bonus_type === bonus);
           const cooldownTurns = cardOwned?.cooldown_turns_left || 0;
           const cardCooldown = getCardCooldown(bonus);
+          const { eventEnded } = useSystemStore(
+            useShallow(state => ({
+              eventEnded: state.eventEndTime ? Date.now() > state.eventEndTime * 1000 : false,
+            }))
+          );
+
           const canBeUsed =
             cardOwned &&
             turnState === 'filling-game-review' &&
             (bonus === 'reroll-game' || bonus === 'game-help-allowed') &&
-            cooldownTurns === 0;
+            cooldownTurns === 0 &&
+            !eventEnded;
 
           return (
             <Tooltip delayDuration={0} key={idx}>
