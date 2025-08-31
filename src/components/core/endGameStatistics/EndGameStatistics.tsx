@@ -21,7 +21,7 @@ import { SECTORS_COLOR_GROUPS } from '@/lib/constants';
 import useUrlPath from '@/hooks/useUrlPath';
 import useSystemStore from '@/stores/systemStore';
 
-const ENABLE_STATS = false;
+const ENABLE_STATS = true;
 
 function EndGameStatistics() {
   const { activate, pathActive } = useUrlPath('/finals');
