@@ -43,7 +43,7 @@ import useSystemStore from '@/stores/systemStore';
 
 const MOCK_API = NO_MOCKS ? false : IS_DEV;
 
-const API_HOST = IS_DEV ? 'http://localhost:8000' : 'https://igropolius.ru';
+const API_HOST = IS_DEV ? 'http://localhost:8000' : 'https://igropolius.eventlab.dev';
 
 export function showApiError(
   endpoint: string,
